@@ -1,14 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
-import { Language, User, Notification } from '../types';
-import Login from './Login';
-import Dashboard from './Dashboard';
-import DocumentManager from './DocumentManager';
-import SummaryConfirmation from './SummaryConfirmation';
-import Profile from './Profile';
-import Notifications from './Notifications';
-import AdminPortal from './AdminPortal';
-import { translations } from '../translations';
+import { Language, User, Notification } from './types';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import DocumentManager from './pages/DocumentManager';
+import SummaryConfirmation from './pages/SummaryConfirmation';
+import Profile from './pages/Profile';
+import Notifications from './pages/Notifications';
+import AdminPortal from './pages/AdminPortal';
+import { translations } from './translations';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
