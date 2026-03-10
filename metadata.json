@@ -1,0 +1,7 @@
+{
+  "name": "Kanaku.co.in - Mobille app",
+  "description": "Digital-first bookkeeping and GST compliance app for small businesses in Tamil Nadu by Kanaku.co.in.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
