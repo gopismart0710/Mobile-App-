@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export const Logo: React.FC<{ className?: string; size?: number }> = ({ className = "", size = 120 }) => {
+import { Logo } from '../Logo';<{ className?: string; size?: number }> = ({ className = "", size = 120 }) => {
   return (
     <div className={`relative flex flex-col items-center ${className}`}>
       <svg
