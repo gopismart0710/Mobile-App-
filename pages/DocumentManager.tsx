@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Language, DocCategory } from '../types';
 import { translations } from '../translations';
-import { processDocumentWithAI } from '../services/gemini';
+import { processDocumentWithAI } from "../gemini";
 
 interface DocumentManagerProps {
   lang: Language;
