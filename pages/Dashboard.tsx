@@ -1,17 +1,17 @@
 import React from "react";
 
-interface Props {
+interface DashboardProps {
   lang: string;
   onNavigate: any;
   selectedMonth: string;
   setSelectedMonth: any;
 }
 
-const Dashboard: React.FC<Props> = ({ selectedMonth }) => {
+const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Dashboard</h2>
-      <p>Selected Month: {selectedMonth}</p>
+      <h1>Dashboard</h1>
+      <p>Kanaku App Running Successfully</p>
     </div>
   );
 };
