@@ -123,16 +123,9 @@ const App: React.FC = () => {
           </div>
         </header>
       )}
-
-      <main className="flex-1 pb-20">
-        {currentPage === 'login' && <Login onLogin={handleLogin} lang={lang} toggleLang={toggleLang} />}
-        {currentPage === 'dashboard' && <Dashboard lang={lang} onNavigate={setCurrentPage} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} />}
-        {currentPage === 'docs' && <DocumentManager lang={lang} onBack={() => setCurrentPage('dashboard')} selectedMonth={selectedMonth} />}
-        {currentPage === 'summary' && <SummaryConfirmation lang={lang} onBack={() => setCurrentPage('dashboard')} selectedMonth={selectedMonth} />}
-        {currentPage === 'profile' && <Profile lang={lang} user={user} onLogout={handleLogout} onNavigate={setCurrentPage} />}
-        {currentPage === 'notifications' && <Notifications lang={lang} notifications={notifications} onBack={() => setCurrentPage('dashboard')} markAllAsRead={markAllAsRead} />}
-        {currentPage === 'admin' && <AdminPortal lang={lang} onBack={() => setCurrentPage('profile')} onSend={addNotification} />}
-      </main>
+<main className="flex-1 pb-20">
+  <h1 style={{padding:40}}>KANAKU APP WORKING 🚀</h1>
+</main>               
 
       {/* Mobile Navigation */}
       {currentPage !== 'login' && (
