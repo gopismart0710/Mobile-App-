@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Language, User, Notification } from './types';
-import Login from './pages/Login.tsx';
-import Dashboard from './pages/Dashboard.tsx';
-import DocumentManager from './pages/DocumentManager.tsx';
-import SummaryConfirmation from './pages/SummaryConfirmation.tsx';
-import Profile from './pages/Profile.tsx';
-import Notifications from './pages/Notifications.tsx';
-import AdminPortal from './pages/AdminPortal.tsx';
+import Login from './Login';
+import Dashboard from './Dashboard';
+import DocumentManager from './DocumentManager';
+import SummaryConfirmation from './SummaryConfirmation';
+import Profile from './Profile';
+import Notifications from './Notifications';
+import AdminPortal from './AdminPortal';
 import { translations } from './translations';
 
 const App: React.FC = () => {
