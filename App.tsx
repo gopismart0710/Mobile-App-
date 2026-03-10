@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Language, User, Notification } from './types';
+import { Language, User, Notification } from '../types';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import DocumentManager from './DocumentManager';
@@ -8,7 +8,7 @@ import SummaryConfirmation from './SummaryConfirmation';
 import Profile from './Profile';
 import Notifications from './Notifications';
 import AdminPortal from './AdminPortal';
-import { translations } from './translations';
+import { translations } from '../translations';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
