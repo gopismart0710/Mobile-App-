@@ -1,7 +1,11 @@
+import React from "react";
 
-import React from 'react';
+interface LogoProps {
+  className?: string;
+  size?: number;
+}
 
-import { Logo } from '../Logo';<{ className?: string; size?: number }> = ({ className = "", size = 120 }) => {
+export const Logo: React.FC<LogoProps> = ({ className = "", size = 120 }) => {
   return (
     <div className={`relative flex flex-col items-center ${className}`}>
       <svg
@@ -11,21 +15,20 @@ import { Logo } from '../Logo';<{ className?: string; size?: number }> = ({ clas
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* The Main 'K' - Navy Blue Base */}
+        {/* Main 'K' Shape */}
         <path
           d="M40 30V170H85V100L130 170H185L120 85L180 30H125L85 85V30H40Z"
-          fill="#1e3a8a" 
-          className="opacity-100"
+          fill="#1e3a8a"
         />
-        
-        {/* The Cyan Highlight Overlay */}
+
+        {/* Cyan Overlay */}
         <path
           d="M85 85L125 30H105L75 75V30H60V170H75V100L115 170H135L85 85Z"
           fill="#22d3ee"
-          className="opacity-90"
+          opacity="0.9"
         />
 
-        {/* The Graph Wave Line */}
+        {/* Graph Wave */}
         <path
           d="M20 100H60L75 60L95 140L115 80L135 120L150 100H180"
           stroke="#22d3ee"
@@ -34,10 +37,10 @@ import { Logo } from '../Logo';<{ className?: string; size?: number }> = ({ clas
           strokeLinejoin="round"
         />
 
-        {/* The Vertical Bar on the right (Plus-like feature) - Navy Blue */}
+        {/* Vertical Bar */}
         <rect x="165" y="80" width="7" height="40" fill="#1e3a8a" rx="3" />
 
-        {/* The Rising Arrow */}
+        {/* Rising Arrow */}
         <path
           d="M150 100L185 45"
           stroke="#22d3ee"
