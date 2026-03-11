@@ -41,7 +41,7 @@ const App = () => {
         <header className="bg-white border-b p-3 flex justify-between items-center">
           <div className="flex items-center gap-2">
   <img
-  src="/K-logo.png"
+  src="/K logo.png"
   alt="Kanaku Logo"
   className="w-9 h-9 object-contain"
 />
