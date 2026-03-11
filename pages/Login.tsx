@@ -38,10 +38,19 @@ export default function Login() {
       </div>
 
       {/* Send OTP */}
-      <button className="w-full bg-blue-800 text-white py-4 rounded-2xl text-lg font-semibold shadow-md">
-        Send OTP
-      </button>
+      <button
+  onClick={() => {
+    if (mobile.length !== 10) {
+      alert("Enter valid mobile number");
+      return;
+    }
 
+    window.location.href = "/dashboard";
+  }}
+  className="w-full bg-blue-800 text-white py-4 rounded-2xl"
+>
+  Send OTP
+</button>
       {/* Register */}
       <p className="text-blue-600 mt-8 font-medium">
         New User? Register Now
