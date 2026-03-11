@@ -8,31 +8,13 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({
-  lang,
   onNavigate,
-  selectedMonth,
-  setSelectedMonth
+  selectedMonth
 }) => {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Dashboard</h1>
-      <p>Kanaku App Running Successfully</p>
+    <div className="p-4 space-y-6">
 
-      <button
-        onClick={() => onNavigate("docs")}
-        style={{
-          marginTop: "20px",
-          padding: "10px 20px",
-          background: "#1e3a8a",
-          color: "white",
-          border: "none",
-          borderRadius: "6px"
-        }}
-      >
-        Go to Docs
-      </button>
-    </div>
-  );
-};
-
-export default Dashboard;
+      {/* Welcome Card */}
+      <div className="bg-white rounded-2xl shadow p-5">
+        <p className="text-slate-500 text-sm">Welcome back,</p>
+        <h2 className="text-2xl font-bold text-slate
