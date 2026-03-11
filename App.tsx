@@ -154,7 +154,7 @@ className="flex flex-col items-center text-slate-500"
 </button>
 
 </nav>
-)}      )}
+)}      
     </div>
   );
 };
