@@ -124,9 +124,61 @@ const App: React.FC = () => {
         </header>
       )}
 <main className="flex-1 pb-20">
-  return (
-  <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto shadow-xl ring-1 ring-slate-200 overflow-x-hidden">
-</main>               
+  {currentPage === 'login' && (
+    <Login onLogin={handleLogin} lang={lang} toggleLang={toggleLang} />
+  )}
+
+  {currentPage === 'dashboard' && (
+    <Dashboard
+      lang={lang}
+      onNavigate={setCurrentPage}
+      selectedMonth={selectedMonth}
+      setSelectedMonth={setSelectedMonth}
+    />
+  )}
+
+  {currentPage === 'docs' && (
+    <DocumentManager
+      lang={lang}
+      onBack={() => setCurrentPage('dashboard')}
+      selectedMonth={selectedMonth}
+    />
+  )}
+
+  {currentPage === 'summary' && (
+    <SummaryConfirmation
+      lang={lang}
+      onBack={() => setCurrentPage('dashboard')}
+      selectedMonth={selectedMonth}
+    />
+  )}
+
+  {currentPage === 'profile' && (
+    <Profile
+      lang={lang}
+      user={user}
+      onLogout={handleLogout}
+      onNavigate={setCurrentPage}
+    />
+  )}
+
+  {currentPage === 'notifications' && (
+    <Notifications
+      lang={lang}
+      notifications={notifications}
+      onBack={() => setCurrentPage('dashboard')}
+      markAllAsRead={markAllAsRead}
+    />
+  )}
+
+  {currentPage === 'admin' && (
+    <AdminPortal
+      lang={lang}
+      onBack={() => setCurrentPage('profile')}
+      onSend={addNotification}
+    />
+  )}
+</main>
 
       {/* Mobile Navigation */}
       {currentPage !== 'login' && (
