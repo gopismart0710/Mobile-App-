@@ -124,7 +124,8 @@ const App: React.FC = () => {
         </header>
       )}
 <main className="flex-1 pb-20">
-  <h1 style={{padding:40}}>KANAKU APP WORKING 🚀</h1>
+  return (
+  <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto shadow-xl ring-1 ring-slate-200 overflow-x-hidden">
 </main>               
 
       {/* Mobile Navigation */}
