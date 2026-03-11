@@ -5,7 +5,7 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
 
   const handleSubmit = () => {
     if (mobile.length !== 10) {
-      alert("Enter valid mobile number");
+      alert(lang === "en" ? "Enter valid mobile number" : "சரியான மொபைல் எண்ணை உள்ளிடவும்");
       return;
     }
 
@@ -13,13 +13,13 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
 
       {/* Language Toggle */}
-      <div className="absolute top-5 right-5">
+      <div className="absolute top-4 right-4">
         <button
           onClick={toggleLang}
-          className="px-3 py-1 text-sm bg-gray-200 rounded-lg"
+          className="px-3 py-1 text-xs font-semibold bg-white border border-gray-300 rounded-md shadow"
         >
           {lang === "en" ? "தமிழ்" : "English"}
         </button>
@@ -40,25 +40,39 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
       <p className="text-gray-500 mb-6 text-center">
         {lang === "en"
           ? "Enter your registered mobile number"
-          : "உங்கள் மொபைல் எண்ணை உள்ளிடவும்"}
+          : "உங்கள் பதிவு செய்யப்பட்ட மொபைல் எண்ணை உள்ளிடவும்"}
       </p>
 
+      {/* Mobile Number Label */}
+      <label className="w-full max-w-sm text-sm text-gray-500 mb-2">
+        {lang === "en" ? "PRIMARY MOBILE NUMBER" : "மொபைல் எண்"}
+      </label>
+
       {/* Mobile Input */}
-      <input
-        type="tel"
-        placeholder={lang === "en" ? "Enter mobile number" : "மொபைல் எண்"}
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
-        className="w-full max-w-sm p-3 border rounded-lg mb-4"
-      />
+      <div className="flex w-full max-w-sm bg-white border rounded-xl p-3 mb-5">
+        <span className="text-gray-400 mr-2">+91</span>
+
+        <input
+          type="tel"
+          placeholder="00000 00000"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+          className="flex-1 outline-none"
+        />
+      </div>
 
       {/* Send OTP */}
       <button
         onClick={handleSubmit}
-        className="w-full max-w-sm bg-blue-700 text-white p-3 rounded-lg"
+        className="w-full max-w-sm bg-blue-800 text-white py-3 rounded-xl font-semibold shadow"
       >
         {lang === "en" ? "Send OTP" : "OTP அனுப்பு"}
       </button>
+
+      {/* Register */}
+      <p className="mt-6 text-blue-600 font-medium">
+        {lang === "en" ? "New User? Register Now" : "புதிய பயனர்? பதிவு செய்யவும்"}
+      </p>
 
     </div>
   );
