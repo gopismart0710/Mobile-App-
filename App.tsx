@@ -40,8 +40,11 @@ const App = () => {
       {currentPage !== 'login' && (
         <header className="bg-white border-b p-3 flex justify-between items-center">
           <div className="flex items-center gap-2">
-  <img src="/logo.png" className="w-8 h-8" />
-
+  <img
+  src="/K-logo.png"
+  alt="Kanaku Logo"
+  className="w-9 h-9 object-contain"
+/>
   <div className="flex items-center gap-2">
     <span className="font-bold text-[15px] text-slate-800">
       kanaku.co.in
