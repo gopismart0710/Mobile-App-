@@ -124,62 +124,63 @@ const App: React.FC = () => {
         </header>
       )}
 <main className="flex-1 pb-20">
-  {currentPage === 'login' && (
-    <Login onLogin={handleLogin} lang={lang} toggleLang={toggleLang} />
-  )}
 
-  {currentPage === 'dashboard' && (
-    <Dashboard
-      lang={lang}
-      onNavigate={setCurrentPage}
-      selectedMonth={selectedMonth}
-      setSelectedMonth={setSelectedMonth}
-    />
-  )}
+{currentPage === 'login' && (
+<Login onLogin={handleLogin} lang={lang} toggleLang={toggleLang} />
+)}
 
-  {currentPage === 'docs' && (
-    <DocumentManager
-      lang={lang}
-      onBack={() => setCurrentPage('dashboard')}
-      selectedMonth={selectedMonth}
-    />
-  )}
+{currentPage === 'dashboard' && (
+<Dashboard
+lang={lang}
+onNavigate={setCurrentPage}
+selectedMonth={selectedMonth}
+setSelectedMonth={setSelectedMonth}
+/>
+)}
 
-  {currentPage === 'summary' && (
-    <SummaryConfirmation
-      lang={lang}
-      onBack={() => setCurrentPage('dashboard')}
-      selectedMonth={selectedMonth}
-    />
-  )}
+{currentPage === 'docs' && (
+<DocumentManager
+lang={lang}
+onBack={() => setCurrentPage('dashboard')}
+selectedMonth={selectedMonth}
+/>
+)}
 
-  {currentPage === 'profile' && (
-    <Profile
-      lang={lang}
-      user={user}
-      onLogout={handleLogout}
-      onNavigate={setCurrentPage}
-    />
-  )}
+{currentPage === 'summary' && (
+<SummaryConfirmation
+lang={lang}
+onBack={() => setCurrentPage('dashboard')}
+selectedMonth={selectedMonth}
+/>
+)}
 
-  {currentPage === 'notifications' && (
-    <Notifications
-      lang={lang}
-      notifications={notifications}
-      onBack={() => setCurrentPage('dashboard')}
-      markAllAsRead={markAllAsRead}
-    />
-  )}
+{currentPage === 'profile' && (
+<Profile
+lang={lang}
+user={user}
+onLogout={handleLogout}
+onNavigate={setCurrentPage}
+/>
+)}
 
-  {currentPage === 'admin' && (
-    <AdminPortal
-      lang={lang}
-      onBack={() => setCurrentPage('profile')}
-      onSend={addNotification}
-    />
-  )}
+{currentPage === 'notifications' && (
+<Notifications
+lang={lang}
+notifications={notifications}
+onBack={() => setCurrentPage('dashboard')}
+markAllAsRead={markAllAsRead}
+/>
+)}
+
+{currentPage === 'admin' && (
+<AdminPortal
+lang={lang}
+onBack={() => setCurrentPage('profile')}
+onSend={addNotification}
+/>
+)}
+
 </main>
-
       {/* Mobile Navigation */}
       {currentPage !== 'login' && (
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-slate-200 flex justify-around py-3 px-2 z-50">
