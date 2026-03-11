@@ -130,7 +130,12 @@ const App: React.FC = () => {
 )}
 
 {currentPage === 'dashboard' && (
-<div style={{padding:20}}>Dashboard Loading...</div>
+  <Dashboard
+    lang={lang}
+    onNavigate={setCurrentPage}
+    selectedMonth={selectedMonth}
+    setSelectedMonth={setSelectedMonth}
+  />
 )}
 
 {currentPage === 'docs' && (
