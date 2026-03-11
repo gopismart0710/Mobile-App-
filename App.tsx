@@ -130,58 +130,30 @@ const App: React.FC = () => {
 )}
 
 {currentPage === 'dashboard' && (
-<Dashboard
-lang={lang}
-onNavigate={setCurrentPage}
-selectedMonth={selectedMonth}
-setSelectedMonth={setSelectedMonth}
-/>
+<div style={{padding:20}}>Dashboard Loading...</div>
 )}
 
 {currentPage === 'docs' && (
-<DocumentManager
-lang={lang}
-onBack={() => setCurrentPage('dashboard')}
-selectedMonth={selectedMonth}
-/>
+<div style={{padding:20}}>Docs Page</div>
 )}
 
 {currentPage === 'summary' && (
-<SummaryConfirmation
-lang={lang}
-onBack={() => setCurrentPage('dashboard')}
-selectedMonth={selectedMonth}
-/>
+<div style={{padding:20}}>Summary Page</div>
 )}
 
 {currentPage === 'profile' && (
-<Profile
-lang={lang}
-user={user}
-onLogout={handleLogout}
-onNavigate={setCurrentPage}
-/>
+<div style={{padding:20}}>Profile Page</div>
 )}
 
 {currentPage === 'notifications' && (
-<Notifications
-lang={lang}
-notifications={notifications}
-onBack={() => setCurrentPage('dashboard')}
-markAllAsRead={markAllAsRead}
-/>
+<div style={{padding:20}}>Notifications Page</div>
 )}
 
 {currentPage === 'admin' && (
-<AdminPortal
-lang={lang}
-onBack={() => setCurrentPage('profile')}
-onSend={addNotification}
-/>
+<div style={{padding:20}}>Admin Page</div>
 )}
 
-</main>
-      {/* Mobile Navigation */}
+</main>      {/* Mobile Navigation */}
       {currentPage !== 'login' && (
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-slate-200 flex justify-around py-3 px-2 z-50">
           <button 
