@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function Login() {
   const [mobile, setMobile] = useState("");
-
+   const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start pt-10 px-6">
 
