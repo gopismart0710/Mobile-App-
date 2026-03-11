@@ -52,10 +52,13 @@ const App = () => {
 
       <main className="flex-1">
 
-        {currentPage === 'login' && (
-<Login onLogin={handleLogin} />
+      {currentPage === 'login' && (
+  <Login
+    onLogin={handleLogin}
+    lang={lang}
+    toggleLang={toggleLang}
+  />
 )}
-
         {currentPage === 'dashboard' && (
           <Dashboard
             lang={lang}
