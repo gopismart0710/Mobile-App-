@@ -5,7 +5,11 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
 
   const handleSubmit = () => {
     if (mobile.length !== 10) {
-      alert(lang === "en" ? "Enter valid mobile number" : "சரியான மொபைல் எண்ணை உள்ளிடவும்");
+      alert(
+        lang === "en"
+          ? "Enter valid mobile number"
+          : "சரியான மொபைல் எண்ணை உள்ளிடவும்"
+      );
       return;
     }
 
@@ -13,10 +17,10 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
+    <div className="flex flex-col items-center min-h-screen p-6 bg-gray-100">
 
-      {/* Language Toggle */}
-      <div className="absolute top-4 right-4">
+      {/* Top bar with language toggle */}
+      <div className="w-full flex justify-end mb-6">
         <button
           onClick={toggleLang}
           className="px-3 py-1 text-xs font-semibold bg-white border border-gray-300 rounded-md shadow"
@@ -29,7 +33,7 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
       <img
         src="/logo.png"
         alt="Kanaku Logo"
-        className="w-48 mb-10"
+        className="w-44 mb-10"
       />
 
       {/* Login Title */}
@@ -43,7 +47,7 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
           : "உங்கள் பதிவு செய்யப்பட்ட மொபைல் எண்ணை உள்ளிடவும்"}
       </p>
 
-      {/* Mobile Number Label */}
+      {/* Mobile Label */}
       <label className="w-full max-w-sm text-sm text-gray-500 mb-2">
         {lang === "en" ? "PRIMARY MOBILE NUMBER" : "மொபைல் எண்"}
       </label>
@@ -71,7 +75,9 @@ const Login = ({ onLogin, lang, toggleLang }: any) => {
 
       {/* Register */}
       <p className="mt-6 text-blue-600 font-medium">
-        {lang === "en" ? "New User? Register Now" : "புதிய பயனர்? பதிவு செய்யவும்"}
+        {lang === "en"
+          ? "New User? Register Now"
+          : "புதிய பயனர்? பதிவு செய்யவும்"}
       </p>
 
     </div>
