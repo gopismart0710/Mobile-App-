@@ -7,14 +7,13 @@ export default function Login() {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-start pt-10 px-6">
 
       {/* Logo */}
-      <img src="/logo.png" alt="Kanaku Logo" className="w-28 mb-4" />
-
-      {/* Brand */}
-      <h1 className="text-2xl font-semibold text-gray-800">kanaku.co.in</h1>
-      <p className="text-blue-600 text-sm mt-1 mb-8">
-        Your Smart Digital Accountant
-      </p>
-
+    <div className="flex flex-col items-center mb-10">
+  <img
+    src="/logo.png"
+    alt="Kanaku Logo"
+    className="w-52"
+  />
+</div>
       {/* Login title */}
       <h2 className="text-2xl font-semibold text-gray-800 mb-2">Login</h2>
       <p className="text-gray-500 text-sm mb-8 text-center">
