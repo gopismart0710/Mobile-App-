@@ -35,7 +35,7 @@ const App: React.FC = () => {
     }
   }, []);
 
-  const handleLogin = (u: User) => {
+  const handleLogin = (u: any) => {
     setUser(u);
     localStorage.setItem('kanaku_user_session', JSON.stringify(u));
     setCurrentPage('dashboard');
