@@ -6,7 +6,7 @@ interface LoginProps {
   toggleLang: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login: React.FC<LoginProps> = ({ onLogin, lang, toggleLang }) => {
   const handleLogin = () => {
     const mockUser = {
       id: "1",
@@ -53,6 +53,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         }}
       >
         Login
+      </button>
+
+      <button
+        onClick={toggleLang}
+        style={{
+          marginTop: "10px",
+          padding: "6px 12px"
+        }}
+      >
+        {lang === "en" ? "தமிழ்" : "English"}
       </button>
     </div>
   );
