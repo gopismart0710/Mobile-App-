@@ -40,9 +40,18 @@ const App = () => {
       {currentPage !== 'login' && (
         <header className="bg-white border-b p-3 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" className="w-8 h-8" />
-            <span className="font-bold">Kanaku</span>
-          </div>
+  <img src="/logo.png" className="w-8 h-8" />
+
+  <div className="flex items-center gap-2">
+    <span className="font-bold text-[15px] text-slate-800">
+      kanaku.co.in
+    </span>
+
+    <span className="text-[11px] text-blue-600 font-medium">
+      Your Business Digital Accountant
+    </span>
+  </div>
+</div>
 
           <button onClick={handleLogout}>
             Logout
