@@ -236,10 +236,9 @@ const DocumentManager: React.FC<DocumentManagerProps> = ({ lang, onBack, selecte
         {lastAnalysis && (
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex flex-col gap-4 shadow-sm">
             <div className="flex justify-between items-center border-b border-emerald-100 pb-2">
-              <span className="text-xs font-bold text-emerald-700 uppercase tracking-tight">AI Extracted ({activeTab})</span>
+              <span className="text-xs font-bold text-emerald-700 uppercase tracking-tight"></span>
               <span className="text-[10px] font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">Validated</span>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
+            </div>Document Uploaded ({activeTab})            <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/60 p-3 rounded-xl border border-emerald-100">
                 <p className="text-[10px] text-slate-500 uppercase font-bold tracking-wider mb-1">{t.total_amount}</p>
                 <p className="text-lg font-bold text-slate-800">₹{lastAnalysis.totalAmount || '---'}</p>
