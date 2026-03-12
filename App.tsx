@@ -47,7 +47,7 @@ const App = () => {
           <div className="flex items-center gap-2">
 
             <img
-              src="/K logo.png"
+              src="/K-logo.png"
               alt="Kanaku"
               className="w-8 h-8 object-contain"
             />
