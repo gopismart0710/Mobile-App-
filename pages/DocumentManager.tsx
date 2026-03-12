@@ -59,8 +59,12 @@ const DocumentManager: React.FC<DocumentManagerProps> = ({ lang, onBack, selecte
     const reader = new FileReader();
     reader.onloadend = async () => {
       const base64 = reader.result as string;
-      const result = await processDocumentWithAI(base64, lang);
-      
+      const result = {
+  totalAmount: "---",
+  gstAmount: "---",
+  invoiceNumber: "DOC-" + Date.now(),
+  date: new Date().toLocaleDateString()
+};      
       if (result) {
         setLastAnalysis(result);
         const newDoc: UploadedDoc = {
