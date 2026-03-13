@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Dashboard from "./components/Dashboard";
-import DocumentManager from "./components/DocumentManager";
-import SummaryConfirmation from "./components/SummaryConfirmation";
-
+import Dashboard from "./pages/Dashboard";
+import DocumentManager from "./pages/DocumentManager";
+import SummaryConfirmation from "./pages/SummaryConfirmation";
 type Page = "home" | "docs" | "verify" | "profile";
 
 const App: React.FC = () => {
