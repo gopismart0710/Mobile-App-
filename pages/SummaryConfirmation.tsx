@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./Dashboard";
 import DocumentManager from "./pages/DocumentManager";
 import SummaryConfirmation from "./pages/SummaryConfirmation";
 
