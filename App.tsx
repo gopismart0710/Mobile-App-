@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import DocumentManager from "./pages/DocumentManager";
 import SummaryConfirmation from "./pages/SummaryConfirmation";
-import Logo from "./Logo";
+import { Logo } from "./Logo";
 
 type Page = "home" | "docs" | "verify" | "profile" | "login";
 
