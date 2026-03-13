@@ -93,3 +93,19 @@ const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
 
         {/* Total Sales */}
         <div className="bg-slate-50 rounded-xl p-4
+        {/* Total Sales */}
+<div className="bg-slate-50 rounded-xl p-4">
+
+  <p className="text-xs text-slate-500 uppercase font-bold">
+    Total Sales Value
+  </p>
+
+  <p className="text-3xl font-bold text-slate-900">
+    ₹4,25,000
+  </p>
+
+  <p className="text-sm text-blue-600 font-semibold">
+    12 Tax Invoices Detected
+  </p>
+
+</div>
