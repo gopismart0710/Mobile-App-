@@ -1,203 +1,135 @@
-import SummaryConfirmation from "./pages/SummaryConfirmation";
-import React, { useState, useEffect } from "react";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import DocumentManager from "./pages/DocumentManager";
+import React, { useState } from "react";
+import { Language } from "../types";
 
-const App = () => {
+interface Props {
+  lang: Language;
+  selectedMonth: string;
+}
 
-  const [lang, setLang] = useState("en");
-  const [user, setUser] = useState<any>(null);
-  const [currentPage, setCurrentPage] = useState("login");
-  const [selectedMonth, setSelectedMonth] = useState("October 2023");
+const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
 
-  useEffect(() => {
-    const savedUser = localStorage.getItem("kanaku_user_session");
-
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-      setCurrentPage("dashboard");
-    }
-  }, []);
-
-  const handleLogin = (userData:any) => {
-    setUser(userData);
-    localStorage.setItem("kanaku_user_session", JSON.stringify(userData));
-    setCurrentPage("dashboard");
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-    localStorage.removeItem("kanaku_user_session");
-    setCurrentPage("login");
-  };
-
-  const toggleLang = () => {
-    setLang(prev => (prev === "en" ? "ta" : "en"));
-  };
+  const [activeTab, setActiveTab] = useState<"gstr1" | "gstr3b">("gstr1");
+  const [confirmed, setConfirmed] = useState(false);
 
   return (
+    <div className="p-4 flex flex-col gap-5">
 
-    <div className="min-h-screen bg-slate-50 flex flex-col max-w-md mx-auto">
+      {/* GST Toggle */}
+      <div className="bg-slate-200 rounded-xl p-1 flex">
 
-      {/* Header */}
-      {currentPage !== "login" && (
+        <button
+          onClick={() => setActiveTab("gstr1")}
+          className={`flex-1 py-2 rounded-lg font-bold ${
+            activeTab === "gstr1"
+              ? "bg-white text-blue-600 shadow"
+              : "text-slate-500"
+          }`}
+        >
+          GSTR-1
+        </button>
 
-        <header className="bg-white border-b p-3 flex justify-between items-center">
+        <button
+          onClick={() => setActiveTab("gstr3b")}
+          className={`flex-1 py-2 rounded-lg font-bold ${
+            activeTab === "gstr3b"
+              ? "bg-white text-blue-600 shadow"
+              : "text-slate-500"
+          }`}
+        >
+          GSTR-3B
+        </button>
 
-          <div className="flex items-center gap-2">
+      </div>
 
-            <img
-              src="/k-logo.png"
-              alt="Kanaku"
-              className="w-8 h-8 object-contain"
-            />
+      {/* Deadline */}
+      <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex justify-between">
 
-            <div className="flex items-center gap-2">
+        <div>
+          <p className="text-xs font-bold text-yellow-700 uppercase">
+            Filing Deadline
+          </p>
 
-              <span className="font-bold text-[15px] text-slate-800">
-                kanaku.co.in
-              </span>
+          <p className="text-lg font-bold text-slate-800">
+            11 Nov 2023
+          </p>
+        </div>
 
-              <span className="text-[10px] text-blue-600 font-medium">
-                Your Business Digital Accountant
-              </span>
+        <div className="bg-yellow-200 px-3 py-1 rounded-lg text-sm font-bold">
+          {selectedMonth}
+        </div>
 
-            </div>
+      </div>
 
-          </div>
+      {/* Summary Card */}
+      <div className="bg-white rounded-2xl shadow p-5 flex flex-col gap-4">
 
-          <button
-            onClick={handleLogout}
-            className="text-sm text-red-500 font-semibold"
-          >
-            Logout
-          </button>
+        <h2 className="text-lg font-bold">
+          Verify GSTR-1
+        </h2>
 
-        </header>
-      )}
+        <p className="text-sm text-slate-400">
+          {selectedMonth}
+        </p>
 
-      {/* Main Content */}
+        {/* Total Sales */}
+        <div className="bg-slate-50 rounded-xl p-4">
 
-      <main className="flex-1">
+          <p className="text-xs text-slate-500 uppercase font-bold">
+            Total Sales Value
+          </p>
 
-        {currentPage === "login" && (
+          <p className="text-3xl font-bold text-slate-800">
+            ₹4,25,000
+          </p>
 
-          <Login
-            onLogin={handleLogin}
-            lang={lang}
-            toggleLang={toggleLang}
-          />
+          <p className="text-sm text-blue-600 font-semibold">
+            12 Tax Invoices Detected
+          </p>
 
-        )}
+        </div>
 
-        {currentPage === "dashboard" && (
+        {/* GST Liability */}
+        <div className="flex justify-between text-lg font-bold">
 
-          <Dashboard
-            lang={lang}
-            onNavigate={setCurrentPage}
-            selectedMonth={selectedMonth}
-            setSelectedMonth={setSelectedMonth}
-          />
+          <span>Output GST Liability</span>
 
-        )}
+          <span>₹76,500</span>
 
-        {currentPage === "docs" && (
+        </div>
 
-          <DocumentManager
-            lang={lang}
-            selectedMonth={selectedMonth}
-            onBack={() => setCurrentPage("dashboard")}
-          />
+        {/* Download */}
+        <button className="border rounded-xl p-3 font-semibold">
+          Download Sales Data
+        </button>
 
-        )}
+      </div>
 
-     {currentPage === 'summary' && (
-  <SummaryConfirmation
-    lang={lang}
-    selectedMonth={selectedMonth}
-  />
-)}
-        {currentPage === "profile" && (
-          <div style={{ padding: 20 }}>Profile Page</div>
-        )}
+      {/* Confirmation */}
+      <label className="flex items-center gap-3 text-sm">
 
-      </main>
+        <input
+          type="checkbox"
+          checked={confirmed}
+          onChange={() => setConfirmed(!confirmed)}
+        />
 
-      {/* Bottom Navigation */}
+        I confirm the GSTR-1 sales summary details for this filing
 
-      {currentPage !== "login" && (
+      </label>
 
-        <nav className="bg-white border-t flex justify-around py-3">
-
-          <button
-            onClick={() => setCurrentPage("dashboard")}
-            className="flex flex-col items-center text-blue-600"
-          >
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="3" y="3" width="7" height="7"/>
-              <rect x="14" y="3" width="7" height="7"/>
-              <rect x="14" y="14" width="7" height="7"/>
-              <rect x="3" y="14" width="7" height="7"/>
-            </svg>
-
-            <span className="text-xs mt-1">Home</span>
-
-          </button>
-
-          <button
-            onClick={() => setCurrentPage("docs")}
-            className="flex flex-col items-center text-slate-500"
-          >
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-            </svg>
-
-            <span className="text-xs mt-1">Docs</span>
-
-          </button>
-
-          <button
-            onClick={() => setCurrentPage("summary")}
-            className="flex flex-col items-center text-slate-500"
-          >
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-
-            <span className="text-xs mt-1">Verify</span>
-
-          </button>
-
-          <button
-            onClick={() => setCurrentPage("profile")}
-            className="flex flex-col items-center text-slate-500"
-          >
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-
-            <span className="text-xs mt-1">Profile</span>
-
-          </button>
-
-        </nav>
-
-      )}
+      <button
+        disabled={!confirmed}
+        className={`p-3 rounded-xl font-bold ${
+          confirmed
+            ? "bg-blue-600 text-white"
+            : "bg-slate-300 text-slate-500"
+        }`}
+      >
+        Submit for Filing
+      </button>
 
     </div>
-
   );
-
 };
 
-export default App;
+export default SummaryConfirmation;
