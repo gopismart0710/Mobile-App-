@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dashboard from "./Dashboard";
-import DocumentManager from "./pages/DocumentManager";
-import SummaryConfirmation from "./pages/SummaryConfirmation";
+import DocumentManager from "./DocumentManager";
+import SummaryConfirmation from "./SummaryConfirmation";
 
 type Page = "home" | "docs" | "verify" | "profile";
 
