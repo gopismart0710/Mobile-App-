@@ -71,10 +71,9 @@ const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
       </div>
 
       {/* Verification Card */}
-      <div className="bg-white rounded-2xl border shadow-sm p-5">
+      <div className="bg-white rounded-2xl border shadow-sm p-5 flex flex-col gap-4">
 
-        <div className="flex items-center gap-3 mb-4">
-
+        <div className="flex items-center gap-3">
           <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
             📄
           </div>
@@ -88,24 +87,68 @@ const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
               {selectedMonth}
             </p>
           </div>
-
         </div>
 
         {/* Total Sales */}
-        <div className="bg-slate-50 rounded-xl p-4
-        {/* Total Sales */}
-<div className="bg-slate-50 rounded-xl p-4">
+        <div className="bg-slate-50 rounded-xl p-4">
 
-  <p className="text-xs text-slate-500 uppercase font-bold">
-    Total Sales Value
-  </p>
+          <p className="text-xs text-slate-500 uppercase font-bold">
+            Total Sales Value
+          </p>
 
-  <p className="text-3xl font-bold text-slate-900">
-    ₹4,25,000
-  </p>
+          <p className="text-3xl font-bold text-slate-900">
+            ₹4,25,000
+          </p>
 
-  <p className="text-sm text-blue-600 font-semibold">
-    12 Tax Invoices Detected
-  </p>
+          <p className="text-sm text-blue-600 font-semibold">
+            12 Tax Invoices Detected
+          </p>
 
-</div>
+        </div>
+
+        {/* GST Liability */}
+        <div className="flex justify-between text-lg font-semibold">
+          <span>Output GST Liability</span>
+          <span>₹76,500</span>
+        </div>
+
+        {/* Download Button */}
+        <button className="w-full border border-slate-200 rounded-xl p-3 font-semibold hover:bg-slate-50">
+          Download Sales Data
+        </button>
+
+      </div>
+
+      {/* Confirmation */}
+      <label className="flex items-start gap-3 text-sm">
+
+        <input
+          type="checkbox"
+          checked={confirmed}
+          onChange={() => setConfirmed(!confirmed)}
+          className="mt-1 accent-blue-600"
+        />
+
+        <span>
+          I confirm the GSTR-1 sales summary details for this filing
+        </span>
+
+      </label>
+
+      {/* Submit Button */}
+      <button
+        disabled={!confirmed}
+        className={`w-full p-3 rounded-xl font-bold transition ${
+          confirmed
+            ? "bg-blue-600 text-white"
+            : "bg-slate-300 text-slate-500"
+        }`}
+      >
+        Submit for Filing
+      </button>
+
+    </div>
+  );
+};
+
+export default SummaryConfirmation;
