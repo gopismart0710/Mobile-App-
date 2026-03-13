@@ -112,10 +112,12 @@ const App = () => {
 
         )}
 
-        {currentPage === "summary" && (
-          <div style={{ padding: 20 }}>Verify Page</div>
-        )}
-
+     {currentPage === 'summary' && (
+  <SummaryConfirmation
+    lang={lang}
+    selectedMonth={selectedMonth}
+  />
+)}
         {currentPage === "profile" && (
           <div style={{ padding: 20 }}>Profile Page</div>
         )}
