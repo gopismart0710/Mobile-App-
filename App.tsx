@@ -102,17 +102,17 @@ const App = () => {
 
         )}
 
-        {currentPage === "docs" && (
+       {currentPage === "docs" && (
 
-          <DocumentManager
-            lang={lang}
-            selectedMonth={selectedMonth}
-            onBack={() => setCurrentPage("dashboard")}
-          />
+  <DocumentManager
+    lang={lang}
+    selectedMonth={selectedMonth}
+    onBack={() => setCurrentPage("dashboard")}
+  />
 
-        )}
+)}
 
-      {currentPage === "summary" && (
+{currentPage === "summary" && (
 
   <SummaryConfirmation
     lang={lang}
@@ -121,9 +121,13 @@ const App = () => {
 
 )}
 
-        {currentPage === "profile" && (
-          <div style={{ padding: 20 }}>Profile Page</div>
-        )}
+{currentPage === "profile" && (
+
+  <div className="p-4">
+    Profile Page
+  </div>
+
+)}
 
       </main>
 
