@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import DocumentManager from "./pages/DocumentManager";
+import SummaryConfirmation from "./pages/SummaryConfirmation";
 
 const App = () => {
 
