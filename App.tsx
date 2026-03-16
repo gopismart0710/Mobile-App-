@@ -1,163 +1,135 @@
 import React, { useState } from "react";
-import Dashboard from "./pages/Dashboard";
-import DocumentManager from "./pages/DocumentManager";
-import SummaryConfirmation from "./pages/SummaryConfirmation";
-import { Logo } from "./Logo";
+import { Language } from "../types";
 
-type Page = "home" | "docs" | "verify" | "profile" | "login";
+interface Props {
+  lang: Language;
+  selectedMonth: string;
+}
 
-const App: React.FC = () => {
+const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
 
-  const [page, setPage] = useState<Page>("login");
-  const [selectedMonth, setSelectedMonth] = useState("October 2023");
-
-  const renderPage = () => {
-
-    switch (page) {
-
-      case "home":
-        return (
-          <Dashboard
-            lang="en"
-            selectedMonth={selectedMonth}
-            setSelectedMonth={setSelectedMonth}
-            onNavigate={setPage}
-          />
-        );
-
-      case "docs":
-        return (
-          <DocumentManager
-            lang="en"
-            selectedMonth={selectedMonth}
-            onBack={() => setPage("home")}
-          />
-        );
-
-      case "verify":
-        return (
-          <SummaryConfirmation
-            lang="en"
-            selectedMonth={selectedMonth}
-          />
-        );
-
-      case "profile":
-        return (
-          <div className="p-4">
-            <h2 className="text-lg font-bold">Profile</h2>
-          </div>
-        );
-
-      case "login":
-        return (
-          <div className="flex flex-col items-center justify-center h-full p-6 gap-4">
-
-            <Logo />
-
-            <button
-              onClick={() => setPage("home")}
-              className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold"
-            >
-              Login
-            </button>
-
-          </div>
-        );
-
-    }
-
-  };
+  const [activeTab, setActiveTab] = useState<"gstr1" | "gstr3b">("gstr1");
+  const [confirmed, setConfirmed] = useState(false);
 
   return (
+    <div className="p-4 flex flex-col gap-5">
 
-    <div className="min-h-screen bg-slate-100 flex justify-center">
+      {/* GST Toggle */}
+      <div className="bg-slate-200 rounded-xl p-1 flex">
 
-      {/* Mobile container */}
-      <div className="w-full max-w-md bg-white min-h-screen flex flex-col">
+        <button
+          onClick={() => setActiveTab("gstr1")}
+          className={`flex-1 py-2 rounded-lg font-bold ${
+            activeTab === "gstr1"
+              ? "bg-white text-blue-600 shadow"
+              : "text-slate-500"
+          }`}
+        >
+          GSTR-1
+        </button>
 
-        {/* HEADER */}
-        <div className="border-b bg-white px-4 py-3 flex items-center justify-between">
-
-          <div className="flex items-center gap-2">
-            <Logo />
-            <span className="text-blue-600 text-sm font-semibold">
-              Your Business Digital Accountant
-            </span>
-          </div>
-
-          {page !== "login" && (
-            <button
-              onClick={() => setPage("login")}
-              className="text-red-600 font-semibold"
-            >
-              Logout
-            </button>
-          )}
-
-        </div>
-
-        {/* PAGE CONTENT */}
-        <div className="flex-1 overflow-y-auto pb-20">
-
-          {renderPage()}
-
-        </div>
-
-        {/* FOOTER NAVIGATION */}
-        {page !== "login" && (
-
-          <div className="fixed bottom-0 w-full max-w-md bg-white border-t flex justify-around py-2">
-
-            <button
-              onClick={() => setPage("home")}
-              className={`flex flex-col items-center text-xs ${
-                page === "home" ? "text-blue-600" : "text-gray-400"
-              }`}
-            >
-              <div className="text-xl">⬛</div>
-              Home
-            </button>
-
-            <button
-              onClick={() => setPage("docs")}
-              className={`flex flex-col items-center text-xs ${
-                page === "docs" ? "text-blue-600" : "text-gray-400"
-              }`}
-            >
-              <div className="text-xl">📄</div>
-              Docs
-            </button>
-
-            <button
-              onClick={() => setPage("verify")}
-              className={`flex flex-col items-center text-xs ${
-                page === "verify" ? "text-blue-600" : "text-gray-400"
-              }`}
-            >
-              <div className="text-xl">📑</div>
-              Verify
-            </button>
-
-            <button
-              onClick={() => setPage("profile")}
-              className={`flex flex-col items-center text-xs ${
-                page === "profile" ? "text-blue-600" : "text-gray-400"
-              }`}
-            >
-              <div className="text-xl">👤</div>
-              Profile
-            </button>
-
-          </div>
-
-        )}
+        <button
+          onClick={() => setActiveTab("gstr3b")}
+          className={`flex-1 py-2 rounded-lg font-bold ${
+            activeTab === "gstr3b"
+              ? "bg-white text-blue-600 shadow"
+              : "text-slate-500"
+          }`}
+        >
+          GSTR-3B
+        </button>
 
       </div>
 
-    </div>
+      {/* Deadline */}
+      <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 flex justify-between">
 
+        <div>
+          <p className="text-xs font-bold text-yellow-700 uppercase">
+            Filing Deadline
+          </p>
+
+          <p className="text-lg font-bold text-slate-800">
+            11 Nov 2023
+          </p>
+        </div>
+
+        <div className="bg-yellow-200 px-3 py-1 rounded-lg text-sm font-bold">
+          {selectedMonth}
+        </div>
+
+      </div>
+
+      {/* Summary Card */}
+      <div className="bg-white rounded-2xl shadow p-5 flex flex-col gap-4">
+
+        <h2 className="text-lg font-bold">
+          Verify GSTR-1
+        </h2>
+
+        <p className="text-sm text-slate-400">
+          {selectedMonth}
+        </p>
+
+        {/* Total Sales */}
+        <div className="bg-slate-50 rounded-xl p-4">
+
+          <p className="text-xs text-slate-500 uppercase font-bold">
+            Total Sales Value
+          </p>
+
+          <p className="text-3xl font-bold text-slate-800">
+            ₹4,25,000
+          </p>
+
+          <p className="text-sm text-blue-600 font-semibold">
+            12 Tax Invoices Detected
+          </p>
+
+        </div>
+
+        {/* GST Liability */}
+        <div className="flex justify-between text-lg font-bold">
+
+          <span>Output GST Liability</span>
+
+          <span>₹76,500</span>
+
+        </div>
+
+        {/* Download */}
+        <button className="border rounded-xl p-3 font-semibold">
+          Download Sales Data
+        </button>
+
+      </div>
+
+      {/* Confirmation */}
+      <label className="flex items-center gap-3 text-sm">
+
+        <input
+          type="checkbox"
+          checked={confirmed}
+          onChange={() => setConfirmed(!confirmed)}
+        />
+
+        I confirm the GSTR-1 sales summary details for this filing
+
+      </label>
+
+      <button
+        disabled={!confirmed}
+        className={`p-3 rounded-xl font-bold ${
+          confirmed
+            ? "bg-blue-600 text-white"
+            : "bg-slate-300 text-slate-500"
+        }`}
+      >
+        Submit for Filing
+      </button>
+
+    </div>
   );
 };
 
-export default App;
+export default SummaryConfirmation;
