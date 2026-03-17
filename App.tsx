@@ -43,8 +43,7 @@ const App = () => {
       {/* Header */}
       {currentPage !== "login" && (
 
-<header className="bg-white border-b px-4 py-3 flex items-center justify-between">
-
+  <header className="sticky top-0 z-50 bg-white border-b px-4 py-3 flex justify-between items-center">
   <div className="flex items-center gap-3">
 
     <img
