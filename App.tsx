@@ -213,8 +213,11 @@ const App = () => {
   {/* Profile */}
   <button
     onClick={() => setCurrentPage("profile")}
-    className="flex flex-col items-center text-slate-500"
-  >
+    className={`flex flex-col items-center ${
+  currentPage === "dashboard"
+    ? "text-blue-600"
+    : "text-slate-500"
+}`}  >
 
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
