@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface DashboardProps {
   lang: string;
@@ -6,17 +6,54 @@ interface DashboardProps {
   selectedMonth: string;
   setSelectedMonth: any;
 }
+
 interface Deadline {
   title: string;
   dueDate: string;
   daysLeft: number;
 }
 
+const getGSTDeadlines = (): Deadline[] => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+
+  const deadlines = [
+    { title: "GSTR-1 Filing", day: 11 },
+    { title: "GSTR-3B Filing", day: 20 },
+    { title: "TDS Payment", day: 7 },
+  ];
+
+  return deadlines.map((item) => {
+    const dueDate = new Date(year, month, item.day);
+
+    // Move to next month if already passed
+    if (dueDate < today) {
+      dueDate.setMonth(month + 1);
+    }
+
+    const diffTime = dueDate.getTime() - today.getTime();
+    const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return {
+      title: item.title,
+      dueDate: dueDate.toDateString(),
+      daysLeft,
+    };
+  });
+};
+
 const Dashboard: React.FC<DashboardProps> = ({
   onNavigate,
   selectedMonth,
   setSelectedMonth
 }) => {
+  const [deadlines, setDeadlines] = useState<Deadline[]>([]);
+
+  useEffect(() => {
+    setDeadlines(getGSTDeadlines());
+  }, []);
+
   return (
     <div className="p-4 space-y-6">
 
@@ -54,34 +91,4 @@ const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Deadlines */}
       <div>
-        <h3 className="font-bold text-slate-600 mb-3">UPCOMING DEADLINES</h3>
-
-        <div className="bg-white rounded-xl p-4 shadow mb-3">
-          <p className="font-semibold">GSTR-1 Filing</p>
-          <p className="text-sm text-slate-500">Deadline: 11th Nov 2023</p>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow mb-3">
-          <p className="font-semibold">GSTR-3B Filing</p>
-          <p className="text-sm text-slate-500">Deadline: 20th Nov 2023</p>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow">
-          <p className="font-semibold">TDS Payment</p>
-          <p className="text-sm text-slate-500">Deadline: 7th Nov 2023</p>
-        </div>
-      </div>
-
-      {/* Quick Button */}
-      <button
-        onClick={() => onNavigate("docs")}
-        className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold"
-      >
-        Go to Docs
-      </button>
-
-    </div>
-  );
-};
-
-export default Dashboard;
+        <h3 className="font-bold text-slate-600 mb-3">UPCOMI
