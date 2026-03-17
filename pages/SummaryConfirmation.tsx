@@ -75,31 +75,42 @@ const App: React.FC = () => {
 
     <div className="min-h-screen bg-slate-100 flex justify-center">
 
-      {/* Mobile App Container */}
-      <div className="w-full max-w-md bg-white min-h-screen flex flex-col">
+     {/* Header */}
+<div className="sticky top-0 z-40 bg-white border-b px-4 py-3 flex items-center justify-between">
 
-       
+  <div className="flex items-center gap-2">
 
-          <div className="flex items-center gap-4 text-slate-500">
+    <img
+      src="/k-logo.png"
+      alt="Kanaku"
+      className="h-8"
+    />
 
-            <div className="relative text-lg">
-              🔔
-              <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
-                1
-              </span>
-            </div>
+    <div className="text-[12px] text-blue-600 font-semibold">
+      Your Business Digital Accountant
+    </div>
 
-            <button
-              onClick={() => setIsLoggedIn(false)}
-              className="text-lg"
-            >
-              ⇢
-            </button>
+  </div>
 
-          </div>
+  <div className="flex items-center gap-4 text-slate-500">
 
-        </div>
+    <div className="relative text-lg">
+      🔔
+      <span className="absolute -top-1 -right-2 text-[10px] bg-red-500 text-white rounded-full px-1">
+        1
+      </span>
+    </div>
 
+    <button
+      onClick={() => setIsLoggedIn(false)}
+      className="text-lg"
+    >
+      ⇢
+    </button>
+
+  </div>
+
+</div>
         {/* Page Content */}
         <div className="flex-1 overflow-y-auto pb-20">
 
