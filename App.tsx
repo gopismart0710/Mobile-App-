@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import DocumentManager from "./pages/DocumentManager";
 import SummaryConfirmation from "./pages/SummaryConfirmation";
-import AdminPortal from "./pages/Adminportal";
+import AdminPortal from "./pages/AdminPortal";
 
 const App = () => {
 
