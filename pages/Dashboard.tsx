@@ -27,7 +27,6 @@ const getGSTDeadlines = (): Deadline[] => {
   return deadlines.map((item) => {
     const dueDate = new Date(year, month, item.day);
 
-    // Move to next month if already passed
     if (dueDate < today) {
       dueDate.setMonth(month + 1);
     }
@@ -91,4 +90,33 @@ const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Deadlines */}
       <div>
-        <h3 className="font-bold text-slate-600 mb-3">UPCOMI
+        <h3 className="font-bold text-slate-600 mb-3">UPCOMING DEADLINES</h3>
+
+        {deadlines.map((item, index) => (
+          <div key={index} className="bg-white rounded-xl p-4 shadow mb-3">
+            <p className="font-semibold">{item.title}</p>
+            <p className="text-sm text-slate-500">Due: {item.dueDate}</p>
+            <p
+              className={`text-sm mt-1 font-semibold ${
+                item.daysLeft <= 3 ? "text-red-500" : "text-green-600"
+              }`}
+            >
+              {item.daysLeft} days left
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Quick Button */}
+      <button
+        onClick={() => onNavigate("docs")}
+        className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold"
+      >
+        Go to Docs
+      </button>
+
+    </div>
+  );
+};
+
+export default Dashboard;
