@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
@@ -11,19 +10,27 @@ interface AdminPortalProps {
 
 const AdminPortal: React.FC<AdminPortalProps> = ({ lang, onBack, onSend }) => {
   const t = translations[lang];
+
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
 
+  // 🔹 Dummy client data (next step: make dynamic)
+  const clients = [
+    { name: "ABC Traders", status: "Not Filed" },
+    { name: "XYZ Pvt Ltd", status: "Filed" },
+    { name: "MNO Stores", status: "In Progress" }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title || !message) return;
-    
+
     onSend({ title, message });
     setSent(true);
     setTitle('');
     setMessage('');
-    
+
     setTimeout(() => {
       setSent(false);
       onBack();
@@ -32,56 +39,88 @@ const AdminPortal: React.FC<AdminPortalProps> = ({ lang, onBack, onSend }) => {
 
   return (
     <div className="flex flex-col p-6 gap-6 animate-in slide-in-from-bottom duration-300">
+
+      {/* Header */}
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="p-2 -ml-2 text-slate-500 hover:text-blue-600 transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        <button onClick={onBack} className="p-2 -ml-2 text-slate-500 hover:text-blue-600">
+          ←
         </button>
         <h2 className="text-xl font-bold text-slate-800">{t.admin_portal}</h2>
       </div>
 
-      <div className="bg-blue-800 text-white p-6 rounded-3xl shadow-xl shadow-blue-200">
+      {/* 🔷 Admin Stats */}
+      <div className="grid grid-cols-2 gap-4">
+
+        <div className="bg-white p-4 rounded-xl shadow">
+          <p className="text-sm text-gray-500">Total Clients</p>
+          <p className="text-xl font-bold">{clients.length}</p>
+        </div>
+
+        <div className="bg-white p-4 rounded-xl shadow">
+          <p className="text-sm text-gray-500">Pending Filings</p>
+          <p className="text-xl font-bold text-red-500">
+            {clients.filter(c => c.status !== "Filed").length}
+          </p>
+        </div>
+
+      </div>
+
+      {/* 🔷 Client List */}
+      <div className="bg-white rounded-xl shadow p-4 space-y-2">
+        <h3 className="font-semibold mb-2">Clients</h3>
+
+        {clients.map((c, i) => (
+          <div key={i} className="flex justify-between text-sm">
+            <span>{c.name}</span>
+            <span className={
+              c.status === "Filed"
+                ? "text-green-600"
+                : c.status === "In Progress"
+                ? "text-yellow-600"
+                : "text-red-500"
+            }>
+              {c.status}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* 🔷 Notification Section (existing feature) */}
+      <div className="bg-blue-800 text-white p-6 rounded-3xl shadow-xl">
         <h3 className="font-bold text-lg mb-1">Broadcast Notification</h3>
-        <p className="text-xs text-blue-200 opacity-80">This simulates the Accountant's back-office portal sending messages to clients.</p>
+        <p className="text-xs opacity-80">Send message to all clients</p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Message Title</label>
-          <input 
-            required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g., GST Update, Holiday Notice"
-            className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none font-bold"
-          />
-        </div>
 
-        <div className="space-y-1">
-          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Message Body</label>
-          <textarea 
-            required
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4}
-            placeholder="Enter your message here..."
-            className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none font-medium text-sm"
-          />
-        </div>
+        <input
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Message Title"
+          className="w-full px-4 py-3 border rounded-xl"
+        />
 
-        <button 
+        <textarea
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={4}
+          placeholder="Message Body"
+          className="w-full px-4 py-3 border rounded-xl"
+        />
+
+        <button
           type="submit"
-          className={`w-full py-4 rounded-2xl font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3 ${
-            sent ? 'bg-emerald-600 text-white' : 'bg-blue-600 text-white active:scale-95'
-          }`}
+          className={`w-full py-3 rounded-xl font-bold ${
+            sent ? 'bg-green-600' : 'bg-blue-600'
+          } text-white`}
         >
-          {sent ? (
-            <>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
-              {t.msg_sent}
-            </>
-          ) : t.send_notification}
+          {sent ? "Sent ✅" : "Send Notification"}
         </button>
+
       </form>
+
     </div>
   );
 };
