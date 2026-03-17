@@ -37,3 +37,8 @@ const SummaryConfirmation: React.FC<Props> = ({ lang, selectedMonth }) => {
         >
           GSTR-3B
          </button>
+
+        );
+};
+
+export default SummaryConfirmation;
