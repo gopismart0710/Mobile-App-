@@ -180,25 +180,7 @@ const App = () => {
     </div>
 
   )}
-
-</main>    <div className="bg-white rounded-2xl p-4 shadow">
-      <p className="text-sm text-slate-500">Mobile</p>
-      <p className="font-bold text-slate-800">
-        {user?.mobile || "+91 XXXXXXXX"}
-      </p>
-    </div>
-
-    <button
-      onClick={handleLogout}
-      className="w-full bg-red-500 text-white py-3 rounded-xl font-semibold"
-    >
-      Logout
-    </button>
-
-  </div>
-
-)}
-
+   
       </main>
 
       {/* Bottom Navigation */}
