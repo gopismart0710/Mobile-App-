@@ -78,86 +78,71 @@ const App = () => {
 
       {/* Main Content */}
 
-      <main className="flex-1">
+      <main className="flex-1 pb-20">
 
-        {currentPage === "login" && (
+  {currentPage === "login" && (
+    <Login
+      onLogin={handleLogin}
+      lang={lang}
+      toggleLang={toggleLang}
+    />
+  )}
 
-          <Login
-            onLogin={handleLogin}
-            lang={lang}
-            toggleLang={toggleLang}
-          />
+  {currentPage === "dashboard" && (
+    <Dashboard
+      lang={lang}
+      onNavigate={setCurrentPage}
+      selectedMonth={selectedMonth}
+      setSelectedMonth={setSelectedMonth}
+    />
+  )}
 
-        )}
+  {currentPage === "docs" && (
+    <DocumentManager
+      lang={lang}
+      selectedMonth={selectedMonth}
+      onBack={() => setCurrentPage("dashboard")}
+    />
+  )}
 
-        {currentPage === "dashboard" && (
+  {currentPage === "summary" && (
+    <SummaryConfirmation
+      lang={lang}
+      selectedMonth={selectedMonth}
+    />
+  )}
 
-          <Dashboard
-            lang={lang}
-            onNavigate={setCurrentPage}
-            selectedMonth={selectedMonth}
-            setSelectedMonth={setSelectedMonth}
-          />
+  {currentPage === "profile" && (
 
-        )}
+    <div className="p-4 space-y-5">
 
-       {currentPage === "docs" && (
+      {/* Profile Card */}
+      <div className="bg-white rounded-3xl shadow p-6 flex flex-col items-center text-center">
 
-  <DocumentManager
-    lang={lang}
-    selectedMonth={selectedMonth}
-    onBack={() => setCurrentPage("dashboard")}
-  />
+        <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center text-2xl font-bold text-blue-600 mb-3">
+          {user?.name ? user.name.charAt(0) : "A"}
+        </div>
 
-)}
+        <h2 className="text-xl font-bold text-slate-800">
+          {user?.name || "AK Enterprises"}
+        </h2>
 
-{currentPage === "summary" && (
+        <p className="text-sm text-slate-500 uppercase">
+          Proprietor
+        </p>
 
-  <SummaryConfirmation
-    lang={lang}
-    selectedMonth={selectedMonth}
-  />
+        <span className="mt-2 px-4 py-1 text-xs font-bold bg-green-100 text-green-700 rounded-full">
+          ACTIVE
+        </span>
 
-)}
-
-{currentPage === "profile" && (
-
-  <div className="p-4 space-y-5">
-
-    {/* Profile Card */}
-    <div className="bg-white rounded-3xl shadow p-6 flex flex-col items-center text-center">
-
-      <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center text-2xl font-bold text-blue-600 mb-3">
-        {user?.name ? user.name.charAt(0) : "A"}
       </div>
 
-      <h2 className="text-xl font-bold text-slate-800">
-        {user?.name || "AK Enterprises"}
-      </h2>
-
-      <p className="text-sm text-slate-500 uppercase tracking-wide">
-        Proprietor
-      </p>
-
-      <span className="mt-2 px-4 py-1 text-xs font-bold bg-green-100 text-green-700 rounded-full">
-        ACTIVE
-      </span>
-
-    </div>
-
-    {/* Business Details */}
-    <div>
-      <h3 className="text-xs font-bold text-slate-400 uppercase mb-2">
-        BUSINESS DETAILS
-      </h3>
-
+      {/* Business Details */}
       <div className="bg-white rounded-2xl border divide-y">
 
         <div className="p-4">
           <p className="text-xs text-slate-400 font-bold">GSTIN</p>
-          <p className="font-bold text-slate-800">
-            33AAAAA0000A1Z5
-          </p>
+          <p className="font-bold text-slate-800">33AAAAA0000A1Z5</p>
         </div>
 
         <div className="p-4">
@@ -184,20 +169,19 @@ const App = () => {
         </div>
 
       </div>
+
+      <button
+        onClick={handleLogout}
+        className="w-full bg-red-500 text-white py-3 rounded-xl font-semibold"
+      >
+        Logout
+      </button>
+
     </div>
 
-    {/* Logout Button */}
-    <button
-      onClick={handleLogout}
-      className="w-full bg-red-500 text-white py-3 rounded-xl font-semibold"
-    >
-      Logout
-    </button>
+  )}
 
-  </div>
-
-)}
-    <div className="bg-white rounded-2xl p-4 shadow">
+</main>    <div className="bg-white rounded-2xl p-4 shadow">
       <p className="text-sm text-slate-500">Mobile</p>
       <p className="font-bold text-slate-800">
         {user?.mobile || "+91 XXXXXXXX"}
