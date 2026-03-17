@@ -108,16 +108,7 @@ const DocumentManager: React.FC<DocumentManagerProps> = ({ lang, onBack, selecte
 
   return (
     <div className="flex flex-col pb-10">
-      {/* Navigation Header */}
-      <div className="bg-white border-b border-slate-200 sticky top-14 z-40 px-4 pt-4 pb-2">
-        <div className="flex items-center gap-3 mb-2">
-          <button onClick={onBack} className="p-2 -ml-2 text-slate-500 hover:text-blue-600 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-          </button>
-          <h2 className="text-lg font-bold text-slate-800">{t.dashboard_title}</h2>
-        </div>
-      </div>
-
+      
       <div className="p-4 flex-1 flex flex-col gap-6">
         {/* Category Selection */}
         <section>
