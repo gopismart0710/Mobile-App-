@@ -6,6 +6,11 @@ interface DashboardProps {
   selectedMonth: string;
   setSelectedMonth: any;
 }
+interface Deadline {
+  title: string;
+  dueDate: string;
+  daysLeft: number;
+}
 
 const Dashboard: React.FC<DashboardProps> = ({
   onNavigate,
