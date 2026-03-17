@@ -1,8 +1,4 @@
 import React from "react";
-import React, { useState } from 'react';
-import { Language } from '../types';
-import { translations } from '../translations';
-import * as XLSX from "xlsx";
 
 const AdminDashboard = () => {
 
