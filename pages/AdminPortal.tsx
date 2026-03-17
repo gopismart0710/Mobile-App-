@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
+import * as XLSX from "xlsx";
 
 interface AdminPortalProps {
   lang: Language;
   onBack: () => void;
   onSend: (n: { title: string; message: string }) => void;
 }
+
+const exportExcel = () => {
+  const data = JSON.parse(localStorage.getItem("approved") || "[]");
+
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+
+  XLSX.utils.book_append_sheet(wb, ws, "GSTR1");
+  XLSX.writeFile(wb, "gstr1.xlsx");
+};
+
 
 const AdminPortal: React.FC<AdminPortalProps> = ({ lang, onBack, onSend }) => {
   const t = translations[lang];
@@ -38,6 +50,12 @@ const AdminPortal: React.FC<AdminPortalProps> = ({ lang, onBack, onSend }) => {
   };
 
   return (
+    <button
+  onClick={exportExcel}
+  className="bg-green-600 text-white px-4 py-2 rounded"
+>
+  Download Excel
+</button>
     <div className="flex flex-col p-6 gap-6 animate-in slide-in-from-bottom duration-300">
 
       {/* Header */}
