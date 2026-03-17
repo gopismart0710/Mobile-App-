@@ -78,22 +78,7 @@ const App: React.FC = () => {
       {/* Mobile App Container */}
       <div className="w-full max-w-md bg-white min-h-screen flex flex-col">
 
-        {/* Header */}
-        <div className="sticky top-0 z-40 bg-white border-b px-4 py-3 flex items-center justify-between">
-
-          <div className="flex items-center gap-2">
-
-            <img
-              src="/logo.png"
-              alt="Kanaku"
-              className="h-8"
-            />
-
-            <div className="text-[10px] text-blue-600 font-semibold leading-tight">
-              YOUR ACCOUNTANT, ALWAYS IN YOUR POCKET.
-            </div>
-
-          </div>
+       
 
           <div className="flex items-center gap-4 text-slate-500">
 
