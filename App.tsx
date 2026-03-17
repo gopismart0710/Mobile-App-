@@ -191,6 +191,7 @@ const App = () => {
 
   {/* Home */}
   <button
+   onClick={() => setCurrentPage("Home")}
    className={`flex flex-col items-center ${
   currentPage === "dashboard"
     ? "text-blue-600"
@@ -210,6 +211,7 @@ const App = () => {
 
   {/* Docs */}
   <button
+  onClick={() => setCurrentPage("Docs")}
   className={`flex flex-col items-center ${
   currentPage === "docs"
     ? "text-blue-600"
@@ -227,6 +229,7 @@ const App = () => {
 
   {/* Verify */}
   <button
+     onClick={() => setCurrentPage("Verify")}
     className={`flex flex-col items-center ${
   currentPage === "summary"
     ? "text-blue-600"
