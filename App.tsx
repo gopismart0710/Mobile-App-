@@ -43,38 +43,38 @@ const App = () => {
       {/* Header */}
       {currentPage !== "login" && (
 
-        <header className="bg-white border-b p-3 flex justify-between items-center">
+<header className="bg-white border-b px-4 py-3 flex items-center justify-between">
 
-          <div className="flex items-center gap-2">
+  <div className="flex items-center gap-3">
 
-            <img
-              src="/k-logo.png"
-              alt="Kanaku"
-              className="w-8 h-8 object-contain"
-            />
+    <img
+      src="/k-logo.png"
+      alt="Kanaku"
+      className="w-8 h-8 object-contain"
+    />
 
-            <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2">
 
-              <span className="font-bold text-[15px] text-slate-800">
-                kanaku.co.in
-              </span>
+      <span className="font-bold text-[16px] text-slate-800">
+        kanaku.co.in
+      </span>
 
-              <span className="text-[10px] text-blue-600 font-medium">
-                Your Business Digital Accountant
-              </span>
+      <span className="text-[12px] text-blue-600 font-medium">
+        Your Business Digital Accountant
+      </span>
 
-            </div>
+    </div>
 
-          </div>
+  </div>
 
-          <button
-            onClick={handleLogout}
-            className="text-sm text-red-500 font-semibold"
-          >
-            Logout
-          </button>
+  <button
+    onClick={handleLogout}
+    className="text-red-500 font-semibold text-sm"
+  >
+    Logout
+  </button>
 
-        </header>
+</header>
       )}
 
       {/* Main Content */}
