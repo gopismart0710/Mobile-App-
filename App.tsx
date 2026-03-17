@@ -191,9 +191,11 @@ const App = () => {
 
   {/* Home */}
   <button
-    onClick={() => setCurrentPage("dashboard")}
-    className="flex flex-col items-center text-blue-600"
-  >
+   className={`flex flex-col items-center ${
+  currentPage === "dashboard"
+    ? "text-blue-600"
+    : "text-slate-500"
+}`}  >
 
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
       <rect x="3" y="3" width="7" height="7"/>
@@ -208,9 +210,11 @@ const App = () => {
 
   {/* Docs */}
   <button
-    onClick={() => setCurrentPage("docs")}
-    className="flex flex-col items-center text-slate-500"
-  >
+  className={`flex flex-col items-center ${
+  currentPage === "docs"
+    ? "text-blue-600"
+    : "text-slate-500"
+}`}  >
 
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -223,9 +227,11 @@ const App = () => {
 
   {/* Verify */}
   <button
-    onClick={() => setCurrentPage("summary")}
-    className="flex flex-col items-center text-slate-500"
-  >
+    className={`flex flex-col items-center ${
+  currentPage === "summary"
+    ? "text-blue-600"
+    : "text-slate-500"
+}`}  >
 
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
