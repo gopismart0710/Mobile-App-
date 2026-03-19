@@ -200,8 +200,9 @@ const App = () => {
 
       {currentPage !== "login" && (
 
-  <nav className="bg-white border-t fixed bottom-0 left-0 right-0 max-w-md mx-auto flex justify-around py-3">
-
+ <nav className={`bg-white border-t fixed bottom-0 left-0 right-0 flex justify-around py-3 ${
+  currentPage === "admin" ? "" : "max-w-md mx-auto"
+}`}>
   {/* Home */}
   <button
    onClick={() => setCurrentPage("dashboard")}
